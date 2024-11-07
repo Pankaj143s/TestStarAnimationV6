@@ -127,7 +127,7 @@
 /* Change button color on hover or touch */
 .donate-button:hover,
 .donate-button:active {
-  background-color: #fdd868;
+  background-color: #ffc300;
 }
 
 /* Responsive Styling */

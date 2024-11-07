@@ -580,6 +580,7 @@ function handleTickImageOnScroll() {
     }
 }
 
+// Inside the transformTickGifToButton function
 function transformTickGifToButton(container) {
     const rect = container.getBoundingClientRect();
     const buttonLeft = rect.left + rect.width / 2 - 70;
@@ -646,6 +647,11 @@ function transformTickGifToButton(container) {
     setTimeout(() => {
         container.remove();
         moveButtonToLeft(button);
+
+        // Delay the flying logo (stars) by 10 seconds after the tick message is read
+        setTimeout(() => {
+            initStars(); // Start the stars animation
+        }, 10000); // 10-second delay after tick message
     }, 4000);
 }
 
