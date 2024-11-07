@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Star Animation Plugin
  * Description: A plugin that adds an animated star effect to your WordPress site.
- * Version: 1.6
+ * Version: 1.6 
  * Author: Pankaj Sarnobat
  * License: GPLv2 or later
  */

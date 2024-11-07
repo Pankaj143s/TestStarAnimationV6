@@ -204,8 +204,8 @@ function createStar(autoMove = false, animationType = '') {
     star.classList.add('star');
 
     const starImg = document.createElement('img');
-    // starImg.src = starAnimationData.baseUrl + 'star-image.png';
-    starImg.src = './assets/star-image.png';
+     starImg.src = starAnimationData.baseUrl + 'star-image.png';
+    // starImg.src = './assets/star-image.png';
     starImg.classList.add('star-image');
     star.appendChild(starImg);
 
@@ -307,7 +307,7 @@ function handleStarFall(star, isAutoFalling) {
                 createStar();
             }
         }, 2000);
-    }, 2000);
+    }, 8000);
 }
 
 // Display a message for the stars
@@ -339,7 +339,7 @@ function displayMessage() {
             message.remove();
             adjustMessagesPosition();
         }, 500);
-    }, 5000);
+    }, 10000);
 
     currentMessageIndex++;
     messagesShown++;
@@ -389,8 +389,8 @@ function displayInitialGif() {
             break;
         case 'en':
         default:
-            // img.src = starAnimationData.baseUrl + 'aaron-en.png';
-            img.src = './assets/aaron-en.png';
+             img.src = starAnimationData.baseUrl + 'aaron-en.png';
+            // img.src = './assets/aaron-en.png';
             break;
     }
 
@@ -451,14 +451,10 @@ function scheduleStars() {
 
 // Initialize the first star and start the schedule
 function initStars() {
-    setTimeout(() => {
-        createStar(); // Create the first star after 10 seconds
-        scheduleStars(); // Schedule other stars after the first star appears
-    }, 16000); // 10 seconds
+    createStar(); // Create the first star immediately
+    scheduleStars(); // Schedule other stars after the first star appears
 }
 
-// Start the animation
-initStars();
 
 // ------------------- Code for the tick image --------------------
 
@@ -485,8 +481,8 @@ function displayTickImageOnLoad() {
     // Create the tick image
     const img = document.createElement('img');
     img.classList.add('tick-message');
-    //  img.src = starAnimationData.baseUrl + "tick-logo1.png"
-    img.src = './assets/tick-logo1.png';
+     img.src = starAnimationData.baseUrl + "tick-logo1.png"
+    // img.src = './assets/tick-logo1.png';
     img.alt = 'Tick Image';
     img.style.width = '25px'; // Start small to look like it's in the grass
     img.style.height = 'auto';
@@ -580,22 +576,19 @@ function handleTickImageOnScroll() {
     }
 }
 
+// Inside the transformTickGifToButton function
+
 function transformTickGifToButton(container) {
-    // Get the position and size of the container after enlargement
     const rect = container.getBoundingClientRect();
+    const buttonLeft = rect.left + rect.width / 2 - 70;
+    const buttonTop = rect.top + rect.height / 2 - 20;
 
-    // Calculate the center position for the button
-    const buttonLeft = rect.left + rect.width / 2 - 70; // Center align, considering button width (140px)
-    const buttonTop = rect.top + rect.height / 2 - 20; // Center align, considering button height (40px)
-
-    // Create the donation button
     const button = document.createElement('button');
     button.classList.add('donate-button');
 
     const currentLang = starAnimationData.currentLang || 'en';
     let buttonText = buttonTextByLanguage[currentLang];
 
-    // Add line break for two-line text with proper casing in all languages
     switch (currentLang) {
         case 'en':
             buttonText = 'Support Our<br>Project';
@@ -616,9 +609,7 @@ function transformTickGifToButton(container) {
             buttonText = 'Support Our<br>Project';
     }
 
-    button.innerHTML = `<span>${buttonText}</span>`; // Use a span to wrap the text
-
-    // Set the position and size of the button to match the calculated center
+    button.innerHTML = `<span>${buttonText}</span>`;
     button.style.position = 'fixed';
     button.style.left = `${buttonLeft}px`;
     button.style.top = `${buttonTop}px`;
@@ -627,44 +618,43 @@ function transformTickGifToButton(container) {
     button.style.zIndex = '1002';
     button.style.width = 'auto';
     button.style.height = 'auto';
-    // Add the button to the document
+
     document.body.appendChild(button);
 
-    // Gradually fade out and shrink the tick image container
-    // Gradually fade out and shrink the tick image container
     container.style.transition = 'opacity 2s ease-in-out, transform 2s ease-in-out';
     container.style.opacity = '0';
-    container.style.transformOrigin = 'center center'; // Set transform origin to center
-    container.style.left = '50%'; // Ensure it's centered horizontally
-    container.style.transform = 'translate(-50%, 0) scale(0.5)'; // Shrink with center alignment
+    container.style.transformOrigin = 'center center';
+    container.style.left = '50%';
+    container.style.transform = 'translate(-50%, 0) scale(0.5)';
 
-    // Fade out the text container without changing its position
     if (textContainer) {
         textContainer.style.transition = 'opacity 2s ease-in-out';
         textContainer.style.opacity = '0';
     }
 
-    // Show the button after tick and text fade out
     setTimeout(() => {
         button.style.opacity = '1';
-    }, 1000); // Delay to match the fade-out duration
+    }, 1000);
 
-    // Set the button click action
-    button.onclick = function () {
-        window.location.href = 'https://buy.stripe.com/6oEaIE38W2se4N2145';
+    button.onclick = function (event) {
+        event.stopPropagation(); // Prevent event propagation to avoid unintended restarts
+        window.open('https://buy.stripe.com/6oEaIE38W2se4N2145', '_blank'); // Open in a new tab
     };
 
-    // After some time, move the button to the left side of the screen
     setTimeout(() => {
-        container.remove(); // Remove the tick container after transition
+        container.remove();
         moveButtonToLeft(button);
-    }, 4000); // Wait for fade-out and button fade-in
+
+        // Start the stars animation 10 seconds after the button moves to the left
+        setTimeout(() => {
+            initStars(); // Start the stars animation
+        }, 10000); // 10-second delay after button moves to the left
+    }, 4000);
 }
-
-
 
 function moveButtonToLeft(button) {
     button.style.transition = 'left 2s ease-in-out, top 2s ease-in-out';
     button.style.left = '10px';
     button.style.top = '85%';
 }
+

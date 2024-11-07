@@ -451,14 +451,10 @@ function scheduleStars() {
 
 // Initialize the first star and start the schedule
 function initStars() {
-    setTimeout(() => {
-        createStar(); // Create the first star after 10 seconds
-        scheduleStars(); // Schedule other stars after the first star appears
-    }, 21000); // 10 seconds
+    createStar(); // Create the first star immediately
+    scheduleStars(); // Schedule other stars after the first star appears
 }
 
-// Start the animation
-initStars();
 
 // ------------------- Code for the tick image --------------------
 
@@ -581,6 +577,7 @@ function handleTickImageOnScroll() {
 }
 
 // Inside the transformTickGifToButton function
+
 function transformTickGifToButton(container) {
     const rect = container.getBoundingClientRect();
     const buttonLeft = rect.left + rect.width / 2 - 70;
@@ -648,10 +645,10 @@ function transformTickGifToButton(container) {
         container.remove();
         moveButtonToLeft(button);
 
-        // Delay the flying logo (stars) by 10 seconds after the tick message is read
+        // Start the stars animation 10 seconds after the button moves to the left
         setTimeout(() => {
             initStars(); // Start the stars animation
-        }, 10000); // 10-second delay after tick message
+        }, 10000); // 10-second delay after button moves to the left
     }, 4000);
 }
 

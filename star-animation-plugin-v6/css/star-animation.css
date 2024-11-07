@@ -93,16 +93,16 @@
 
 /* Donate Button Styling */
 .donate-button {
-  background-color: #5dc5a8;
+  background-color: #ffd700;
   font-weight: 700;
-  color: #ffffff;
+  color: #0e6994;
   text-align: center;
   line-height: normal;
   cursor: pointer;
   border: none;
   border-radius: 5px;
   font-size: 1rem; /* Base font size */
-  padding: 10px 20px; /* Increased padding */
+  padding: 6px 8px; /* Increased padding */
   pointer-events: auto;
   position: fixed;
   user-select: none;
@@ -127,7 +127,8 @@
 /* Change button color on hover or touch */
 .donate-button:hover,
 .donate-button:active {
-  background-color: #89cf86;
+  background-color: #ffc300;
+  color: #084866;
 }
 
 /* Responsive Styling */
@@ -159,7 +160,7 @@
   }
   .donate-button {
     font-size: 0.85rem;
-    padding: 7px 14px;
+    padding: 4px 8px;
   }
 }
 
@@ -177,8 +178,8 @@
     max-width: none;
   }
   .donate-button {
-    font-size: 0.8rem;
-    padding: 6px 12px;
+    font-size: 0.7rem;
+    padding: 6px 8px;
   }
 }
 
@@ -193,8 +194,8 @@
     max-width: none;
   }
   .donate-button {
-    font-size: 0.75rem;
-    padding: 5px 10px;
+    font-size: 0.65rem;
+    padding: 4px 6px;
   }
 }
 
@@ -301,7 +302,7 @@
 }
 
 .tick-message-enlarge .tick-message {
-  width: 400px !important; /* Ensure the width increases */
+  width: 200px !important; /* Ensure the width increases */
 }
 
 .tick-message-enlarge #typing-text-container {
@@ -322,6 +323,9 @@
   .tick-message-enlarge #typing-text-container {
     font-size: 16px !important;
   }
+  .tick-message-enlarge .tick-message {
+    width: 140px !important; /* Ensure the width increases */
+  }
 }
 
 /* For smartphones or screens up to 480px wide */
@@ -336,6 +340,9 @@
   .tick-message-enlarge #typing-text-container {
     font-size: 12px !important;
   }
+  .tick-message-enlarge .tick-message {
+    width: 100px !important; /* Ensure the width increases */
+  }
 }
 
 /* For very small screens up to 320px wide */
@@ -349,6 +356,9 @@
 
   .tick-message-enlarge #typing-text-container {
     font-size: 9px !important;
+  }
+  .tick-message-enlarge .tick-message {
+    width: 80px !important; /* Ensure the width increases */
   }
 }
 
