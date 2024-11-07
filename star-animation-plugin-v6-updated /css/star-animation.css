@@ -1,0 +1,359 @@
+/* Animation Wrapper Styling */
+.star-animation-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none; /* Allow clicks to pass through the wrapper */
+}
+
+.star-animation-wrapper .message-container {
+  position: absolute;
+  top: 40vh;
+  right: 5px;
+  max-width: 300px;
+  z-index: 10003;
+}
+
+.star-animation-wrapper .message-container .message {
+  position: absolute;
+  right: 0;
+  width: 350px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, top 0.5s ease;
+  border-bottom: 3px #68c6a1 solid;
+  z-index: 10004;
+}
+
+.star-animation-wrapper .star-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.star-animation-wrapper .star-container .star {
+  cursor: pointer;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 2s;
+  animation-duration: 300s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  box-sizing: content-box;
+  z-index: 10002; /* High z-index to appear above other elements */
+  pointer-events: auto; /* Make stars clickable */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none; /* Prevent default touch actions */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-animation-wrapper .star-container .star .star-image {
+  width: 40px;
+  height: 40px;
+}
+
+/* Image Styling */
+#first-message-image {
+  max-width: 90%;
+  width: 420px;
+}
+
+/* Center Message Styling */
+.center-message {
+  max-width: 80%;
+  width: 400px;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10010;
+  opacity: 0;
+  transition: opacity 1s ease, transform 2s ease-in-out;
+}
+
+/* Donate Button Styling */
+.donate-button {
+  background-color: #5dc5a8;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: normal;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem; /* Base font size */
+  padding: 10px 20px; /* Increased padding */
+  pointer-events: auto;
+  position: fixed;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 2s ease-in-out, left 2s ease-in-out, top 2s ease-in-out,
+    width 2s ease-in-out, height 2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+  width: auto; /* Allow width to adjust based on content */
+  height: auto; /* Allow height to adjust based on content */
+  max-width: 90%; /* Prevent button from exceeding container width */
+}
+/* Adjust button text alignment and spacing */
+.donate-button span {
+  text-align: center;
+  display: block;
+  line-height: 1.2;
+}
+
+/* Change button color on hover or touch */
+.donate-button:hover,
+.donate-button:active {
+  background-color: #89cf86;
+}
+
+/* Responsive Styling */
+
+/* Media query for up to 1366px */
+@media (max-width: 1366px) {
+  .star-animation-wrapper .message-container {
+    right: 0;
+  }
+  .star-animation-wrapper .message-container .message {
+    font-size: 1rem;
+  }
+  .donate-button {
+    font-size: 0.95rem;
+    padding: 9px 18px;
+  }
+}
+
+/* Media query for up to 768px */
+@media (max-width: 768px) {
+  .star-animation-wrapper .message-container {
+    right: 0;
+  }
+  .star-animation-wrapper .message-container .message {
+    font-size: 0.9rem;
+  }
+  #first-message-image {
+    width: 300px;
+  }
+  .donate-button {
+    font-size: 0.85rem;
+    padding: 7px 14px;
+  }
+}
+
+/* Media query for up to 480px */
+@media (max-width: 480px) {
+  .star-animation-wrapper .message-container .message {
+    font-size: 0.9rem;
+    max-width: 200px;
+  }
+  #first-message-image {
+    width: 250px;
+  }
+  .center-message {
+    width: 50%;
+    max-width: none;
+  }
+  .donate-button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Media query for up to 320px */
+@media (max-width: 320px) {
+  .star-animation-wrapper .message-container .message {
+    font-size: 0.85rem;
+    max-width: 160px;
+  }
+  .center-message {
+    width: 30%;
+    max-width: none;
+  }
+  .donate-button {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Star Movement Animations */
+@keyframes move-star-1 {
+  0% {
+    transform: translate(-5vw, -3vh);
+  }
+  25% {
+    transform: translate(75vw, 37vh);
+  }
+  50% {
+    transform: translate(10vw, 55vh);
+  }
+  75% {
+    transform: translate(90vw, 80vh);
+  }
+  100% {
+    transform: translate(20vw, 100vh);
+  }
+}
+
+@keyframes move-star-2 {
+  0% {
+    transform: translate(-5vw, -4vh);
+  }
+  25% {
+    transform: translate(95vw, 20vh);
+  }
+  50% {
+    transform: translate(15vw, 60vh);
+  }
+  75% {
+    transform: translate(85vw, 90vh);
+  }
+  100% {
+    transform: translate(25vw, 100vh);
+  }
+}
+
+@keyframes move-star-3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(85vw, 50vh);
+  }
+  50% {
+    transform: translate(15vw, 70vh);
+  }
+  75% {
+    transform: translate(90vw, 95vh);
+  }
+  100% {
+    transform: translate(20vw, 100vh);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* General star transition */
+.star {
+  transition: background-color 1s ease, transform 1s ease;
+}
+
+/* Tick Message Styling */
+.tick-message {
+  width: 50px; /* Initial small size */
+  height: auto;
+  transition: width 1.5s ease-in-out;
+}
+
+/* Style for the text container */
+#typing-text-container {
+  font-size: 16px;
+  font-weight: bold;
+  color: #6dbfb8;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0; /* Initially transparent */
+  transition: opacity 1.5s ease-in-out;
+  line-height: 1.3;
+  padding: 10px;
+  max-width: 100%;
+  width: auto;
+  box-sizing: border-box;
+  /* Remove any positioning properties like position, left, top, transform */
+}
+
+/* When the tick image and container enlarge */
+.tick-message-enlarge {
+  transform: translateY(-20vh); /* Move upwards */
+  transition: transform 1.5s ease-in-out;
+}
+
+.tick-message-enlarge .tick-message {
+  width: 400px !important; /* Ensure the width increases */
+}
+
+.tick-message-enlarge #typing-text-container {
+  font-size: 20px !important; /* Ensure font size change */
+}
+
+/* Responsive adjustments for tick image */
+
+/* For tablets or screens up to 768px wide */
+@media (max-width: 768px) {
+  .tick-message {
+    width: 40px;
+  }
+  .tick-message-enlarge .tick-message {
+    width: 300px !important;
+  }
+
+  .tick-message-enlarge #typing-text-container {
+    font-size: 16px !important;
+  }
+}
+
+/* For smartphones or screens up to 480px wide */
+@media (max-width: 480px) {
+  .tick-message {
+    width: 30px;
+  }
+  .tick-message-enlarge .tick-message {
+    width: 220px !important;
+  }
+
+  .tick-message-enlarge #typing-text-container {
+    font-size: 12px !important;
+  }
+}
+
+/* For very small screens up to 320px wide */
+@media (max-width: 320px) {
+  .tick-message {
+    width: 25px;
+  }
+  .tick-message-enlarge .tick-message {
+    width: 170px !important;
+  }
+
+  .tick-message-enlarge #typing-text-container {
+    font-size: 9px !important;
+  }
+}
+
+.smooth-typing {
+  transition: all 0.2s ease-in-out; /* Adjusts the smoothness of each character */
+  display: inline-block;
+}
+
